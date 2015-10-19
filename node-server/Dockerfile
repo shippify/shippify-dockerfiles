@@ -4,8 +4,6 @@ MAINTAINER Luis Loaiza <luis@shippify.co>
 
 RUN apt-get update
 
-# Install Node
-
 #INSTALL supervisord
 RUN apt-get install --no-install-recommends -y wget nano curl supervisor make g++ bzip2 python-software-properties
 
