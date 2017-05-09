@@ -18,5 +18,13 @@ require 'yaml'
  })
 Resque.redis.namespace = ENV['RESQUE_NAMESPACE'] || 'resque'
 
+AUTH_PASSWORD = ENV['AUTH']
+if AUTH_PASSWORD
+  Resque::Server.use Rack::Auth::Basic do |username, password|
+    password == AUTH_PASSWORD
+  end
+end
+
+
 run Rack::URLMap.new \
   "/" => Resque::Server.new
